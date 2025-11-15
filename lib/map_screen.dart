@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'models/route_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'routes_menu_screen.dart';
+import 'home_screen.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -68,24 +69,31 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mapa tras'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-          actions: [
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const RoutesMenuScreen()),
-              );
-            },
-          ),
-        ],
-      ),
+     appBar: AppBar(
+  title: const Text('Mapa tras'),
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back),
+    onPressed: () {
+      // Wróć do ekranu logowania i usuń wszystko z historii nawigacji
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        (route) => false,
+      );
+    },
+  ),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.list),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const RoutesMenuScreen()),
+        );
+      },
+    ),
+  ],
+),
       body: FlutterMap(
         mapController: _mapController,
         options: MapOptions(

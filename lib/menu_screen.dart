@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'routes_screen.dart';
 import 'profile_screen.dart';
 import 'book_screen.dart';
+import 'map_screen.dart'; // <-- import mapy
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -13,7 +14,9 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   int _currentIndex = 0;
 
+  // TABY - mapa jako pierwszy element
   final List<Widget> _screens = [
+    const MapScreen(),
     const RoutesScreen(),
     const BookScreen(),
     const ProfileScreen(),
@@ -32,31 +35,32 @@ class _MenuScreenState extends State<MenuScreen> {
         title: const Text('Aplikacja Carpooling'),
         backgroundColor: Colors.blueAccent,
       ),
-
       body: _screens[_currentIndex],
-      
       drawer: _buildDrawer(),
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-
         onTap: _onTabTapped,
-
+        // kolejność: Mapa - Trasy - Rezerwacje - Profil
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_outlined),
+            icon: Icon(Icons.map),
+            label: 'Mapa',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions_car_outlined),
             label: 'Trasy',
-            ),
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book_online_outlined),
             label: 'Rezerwacje',
-            ),
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             label: 'Profil',
-            ),
+          ),
         ],
-      )
+        type: BottomNavigationBarType.fixed,
+      ),
     );
   }
 
@@ -74,23 +78,23 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
             decoration: BoxDecoration(
               color: Colors.blueAccent,
-            ), 
-         ),
-         ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text('Ustawienia'),
-          onTap: () {
-            Navigator.pop(context);
-          },
-         ),
-         const Divider(),
-         ListTile(
-          leading: const Icon(Icons.logout),
-          title: const Text('Wyloguj'),
-          onTap: () {
-            Navigator.pop(context);
-          }
-         ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Ustawienia'),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Wyloguj'),
+            onTap: () {
+              Navigator.pop(context);
+            }
+          ),
         ],
       ),
     );

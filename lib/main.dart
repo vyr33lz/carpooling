@@ -4,6 +4,7 @@ import 'map_screen.dart';
 import 'menu_screen.dart';
 import 'models/route_model.dart';
 import 'models/latlng_adapter.dart';
+import 'home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Carpooling Home Page'),
+      home: const HomeScreen(),
     );
   }
 }
