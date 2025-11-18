@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "353303140418-nmvtsds11c2mp7sb62bnfsa1qquss0bc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carpooling",
+            "certificate_hash": "94fc8e6b2a0154be4b3cfe321254eba8bf2c3166"
+          }
+        },
+        {
           "client_id": "353303140418-uv02nl5vm20rt8a8g39r441oo9ohhvjg.apps.googleusercontent.com",
           "client_type": 3
         }
